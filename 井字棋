@@ -1,4 +1,5 @@
 package com.company;
+import java.util.Arrays;
 import java.util.Scanner;
 /**
  * @author lyle
@@ -9,9 +10,7 @@ public class TicTacToe {
         Scanner input=new Scanner(System.in);
         int[][]qiPan=new int[3][3];
         for (int i=0;i<qiPan.length;i++){
-            for (int j=0;j<qiPan[i].length;j++){
-                qiPan[i][j]=0;
-            }
+            Arrays.fill(qiPan[i], 0);
         }
         System.out.println("棋盘如下：");
         Pan(qiPan);
@@ -19,31 +18,29 @@ public class TicTacToe {
         boolean jie=true;
         boolean yes;
         while (juShu<shuMax){
-            if (res==4){
-                System.out.println("请输入第"+(juShu+1)+"个棋子的行数");
-                for (int i = 0; i < 1; i++) {
-                    int a = input.nextInt();
-                    if (a > 3 | a < 1) {
-                        System.out.println("请重新输入");
-                        continue;
-                    }
-                    System.out.println("请输入第" + (juShu + 1) + "个棋子的列数");
-                    int b = input.nextInt();
-                    if (b > 3 | b < 1) {
-                        System.out.println("请重新输入");
-                        continue;
-                    }
-                    qiPan[a - 1][b - 1] = 1;
-                    Pan(qiPan);
-                    jie=false;
-                    yes=result(qiPan);
-                    if (yes){
-                        juShu=9;
-                        jie=true;
-                    }
+            System.out.println("请输入第"+(juShu+1)+"个棋子的行数");
+            for (int i = 0; i < 1; i++) {
+                int a = input.nextInt();
+                if (a > 3 | a < 1) {
+                    System.out.println("请重新输入");
+                    continue;
+                }
+                System.out.println("请输入第" + (juShu + 1) + "个棋子的列数");
+                int b = input.nextInt();
+                if (b > 3 | b < 1) {
+                    System.out.println("请重新输入");
+                    continue;
+                }
+                qiPan[a - 1][b - 1] = 1;
+                Pan(qiPan);
+                jie=false;
+                yes=result(qiPan);
+                if (yes){
+                    juShu=9;
+                    jie=true;
                 }
             }
-        if(jie==false){
+            if(!jie){
             PanAi(qiPan);
             yes= result(qiPan);
             if (yes){
@@ -54,9 +51,9 @@ public class TicTacToe {
         }
     }
     public static void Pan(int[][]pan){
-        for (int i=0;i<pan.length;i++){
-            for (int j=0;j<pan[i].length;j++){
-                System.out.print(pan[i][j]+" ");
+        for (int[] ints : pan) {
+            for (int anInt : ints) {
+                System.out.print(anInt + " ");
             }
             System.out.println();
         }
