@@ -5,7 +5,7 @@ import java.util.Scanner;
  * @author lyle
  * @date 2020/6/19
  */
-public class TicTacToe {
+class TicTacToe {
     public static void main(String[] args) {
         Scanner input=new Scanner(System.in);
         int[][]qiPan=new int[3][3];
